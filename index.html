@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Générateur de ville médiévale</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div>
+        <h1>Générateur de ville médiévale</h1>
+        <p>Ville organique basée sur quartiers, cellules, parcelles et graphe navigable.</p>
+      </div>
+      <form id="controls" class="controls">
+        <label>
+          Graine
+          <input id="seed" name="seed" value="castel-bridge-42" />
+        </label>
+        <label>
+          Taille
+          <input id="citySize" name="citySize" type="range" min="680" max="1100" value="880" />
+        </label>
+        <label>
+          Densité
+          <input id="density" name="density" type="range" min="0.35" max="0.92" step="0.01" value="0.68" />
+        </label>
+        <label>
+          Quartiers
+          <input id="districtCount" name="districtCount" type="range" min="5" max="10" value="8" />
+        </label>
+        <label>
+          Organicité
+          <input id="organicNoise" name="organicNoise" type="range" min="0" max="1" step="0.01" value="0.62" />
+        </label>
+        <label>
+          Rues
+          <input id="streetComplexity" name="streetComplexity" type="range" min="0.25" max="1" step="0.01" value="0.62" />
+        </label>
+        <label class="checkbox">
+          <input id="wallEnabled" name="wallEnabled" type="checkbox" checked />
+          Murailles
+        </label>
+        <label class="checkbox">
+          <input id="riverEnabled" name="riverEnabled" type="checkbox" checked />
+          Rivière
+        </label>
+        <button type="submit">Regénérer</button>
+      </form>
+    </header>
+
+    <main class="layout">
+      <section class="map-panel">
+        <div id="map" class="map" aria-label="Plan SVG de la ville générée"></div>
+      </section>
+      <aside class="info-panel">
+        <h2>Données exploitables</h2>
+        <p>La carte est rendue depuis des objets géométriques JS indépendants du SVG.</p>
+        <dl id="stats"></dl>
+        <h3>Chemin exemple</h3>
+        <p id="path-report">Cliquez sur « Regénérer » pour recalculer un chemin entre deux portes.</p>
+        <h3>Légende</h3>
+        <ul class="legend">
+          <li><span class="swatch water"></span> Rivière</li>
+          <li><span class="swatch wall"></span> Muraille / portes</li>
+          <li><span class="swatch road"></span> Routes et ruelles</li>
+          <li><span class="swatch district"></span> Quartiers</li>
+          <li><span class="swatch parcel"></span> Parcelles</li>
+          <li><span class="swatch building"></span> Bâtiments</li>
+          <li><span class="swatch field"></span> Jardins / champs</li>
+          <li><span class="swatch route"></span> Chemin calculé</li>
+        </ul>
+      </aside>
+    </main>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

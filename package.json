@@ -1,0 +1,9 @@
+{
+  "name": "fictional-carnival-medieval-city",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check src/main.js && node --check src/generation/city-generator.js && node --check src/render/svg-renderer.js && node scripts/validate-generation.js"
+  }
+}
